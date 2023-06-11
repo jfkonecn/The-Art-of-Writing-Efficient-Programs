@@ -5,6 +5,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+get_property(all_targets GLOBAL PROPERTY TARGETS)
+
+foreach(target ${all_targets})
+    set_target_properties(${target} PROPERTIES LINKER_LANGUAGE CXX)
+endforeach()
+
+
+find_package(benchmark REQUIRED)
 
 add_subdirectory(Chapter02)
 add_subdirectory(Chapter03)
@@ -17,5 +25,4 @@ add_subdirectory(Chapter09)
 add_subdirectory(Chapter10)
 add_subdirectory(Chapter11)
 add_subdirectory(Chapter12)
-
 
