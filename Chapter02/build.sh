@@ -13,6 +13,32 @@ mkdir -p build
 #CPUPROFILE=build/prof.data build/04_substring_sort
 #google-pprof --text build/04_substring_sort build/prof.data
 
-clang++-11 -g -O3 -mavx2 -Wall -pedantic 01_substring_sort_a.C 01_substring_sort.C -o build/01_substring_sort
+#clang++-11 -g -O3 -mavx2 -Wall -pedantic 01_substring_sort_a.C 01_substring_sort.C -o build/01_substring_sort
 #sudo perf stat build/01_substring_sort
-sudo perf stat -e cycles,instructions,branches,branch-misses,cache-references,cache-misses build/01_substring_sort
+#sudo perf stat -e cycles,instructions,branches,branch-misses,cache-references,cache-misses build/01_substring_sort
+
+#clang++-11 -g -O3 -mavx2 -Wall -pedantic 01_substring_sort_a.C 01_substring_sort.C -o build/01_substring_sort
+#sudo perf record  -o build/perf.data build/01_substring_sort
+
+#clang++-11 -g -O3 -mavx2 -Wall -pedantic 01_substring_sort_a.C 01_substring_sort.C -lprofiler -o build/01_substring_sort
+#CPUPROFILE=build/prof.data build/01_substring_sort
+# interactive mode
+#google-pprof build/01_substring_sort build/prof.data
+
+#clang++-11 -g -O3 -mavx2 -Wall -pedantic 05_compare_timer.C -lprofiler -o build/05_compare_timer
+##CPUPROFILE=build/prof.data CPUPROFILE_FREQUENCY=1000 build/05_compare_timer
+#CPUPROFILE=build/prof.data CPUPROFILE_FREQUENCY=1000 build/05_compare_timer
+#google-pprof --pdf build/05_compare_timer build/prof.data > build/prof.pdf
+
+#clang++-11 -g -O3 -mavx2 -Wall -pedantic -lprofiler 05a_compare_timer.C -o build/05a_compare_timer
+#CPUPROFILE=build/prof.data CPUPROFILE_FREQUENCY=1000 build/05a_compare_timer
+#google-pprof --pdf build/05a_compare_timer build/prof.data > build/prof.pdf
+
+#clang++-11 -g -O3 -mavx2 -Wall -pedantic 01_substring_sort_a.C 01_substring_sort.C -lprofiler -o build/01_substring_sort
+##CPUPROFILE=build/prof.data CPUPROFILE_FREQUENCY=1000 build/05_compare_timer
+#CPUPROFILE=build/prof.data CPUPROFILE_FREQUENCY=1000 build/01_substring_sort
+#google-pprof --pdf build/01_substring_sort build/prof.data > build/prof.pdf
+
+clang++-11 -g -O3 -mavx2 -Wall -pedantic -lprofiler 09_compare_timer.C -o build/09_compare_timer
+CPUPROFILE=build/prof.data CPUPROFILE_FREQUENCY=1000 build/09_compare_timer
+google-pprof --pdf build/09_compare_timer build/prof.data > build/prof.pdf
